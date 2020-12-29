@@ -1,0 +1,26 @@
+#map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+html,body {
+    height: 91%;
+    margin: 0;
+    padding: 0;
+  }
+
+.bg-dark{
+    background-color: #0372e0!important;
+}
+
+.navbar-light a{
+    color: whitesmoke !important;
+}
+
+.bg-light {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0372e0 !important;
+    color: white;
+    text-align: center;
+}
