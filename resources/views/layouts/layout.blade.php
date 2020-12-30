@@ -13,13 +13,11 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{config('googlemap')['map_apikey']}}&callback=initMap&libraries=&v=weekly" defer ></script>
         <script type="text/javascript" src="{{asset('js/googlemap.js') }}"></script>
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body>
       @include('includes.nav')
       {{-- map --}}
-      {{-- <div id="map"></div> --}}
+      <div id="map"></div>
       {{-- modals --}}
       <div class="modal fade" id="basicModal-login" tabindex="-1" role="dialog" aria-labelledby="basicModal-login" aria-hidden="true">
         <div class="modal-dialog">
@@ -58,16 +56,17 @@
                     <h4 class="modal-title" id="myModalLabel">Log in</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
                         <div class="form-group">
                           <label for="uname">Username:</label>
-                          <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                          <input type="text" class="form-control" id="name" placeholder="Enter username" name="name" required>
                           <div class="valid-feedback">Valid.</div>
                           <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="form-group">
                           <label for="pwd">Password:</label>
-                          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
                           <div class="valid-feedback">Valid.</div>
                           <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
