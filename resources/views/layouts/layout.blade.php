@@ -12,9 +12,10 @@
         <script type="text/javascript" src="{{asset('js/googlemap.js') }}"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{config('googlemap')['map_apikey']}}&callback=initMap&libraries=&v=weekly" defer ></script>
-    </head>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+      </head>
     <body>
-    @include('includes.nav')
+    @yield('nav')
     <div id="map"></div>
     @include('includes.modals')
     <footer class="bg-light text-center text-lg-start">

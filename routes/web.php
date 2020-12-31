@@ -18,13 +18,12 @@ use App\Http\Controllers\MapController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Auth::routes();
 
 Route::get('/main', [GasstationsController::class, 'index']);
 
 Route::get('/guest', [MapController::class, 'index']);
 
 Route::get('/user', [MapController::class, 'user']);
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

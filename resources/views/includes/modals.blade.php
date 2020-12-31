@@ -7,7 +7,6 @@
             <div class="modal-body">
               <form method="POST" action="{{ route('login') }}">
                 @csrf
-
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -69,11 +68,12 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="basicModal-register" tabindex="-1" role="dialog" aria-labelledby="basicModal-register" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Log in</h4>
+                <h4 class="modal-title" id="myModalLabel">Register</h4>
             </div>
             <div class="modal-body">
               <form method="POST" action="{{ route('register') }}">
@@ -132,6 +132,23 @@
                     </div>
                 </div>
             </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="basicModal-orders" tabindex="-1" role="dialog" aria-labelledby="basicModal-orders" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Orders</h4>
+            </div>
+            <div class="modal-body">
+                <h2>order1</h2>
+                <h2>order2</h2>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
