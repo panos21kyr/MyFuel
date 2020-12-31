@@ -15,7 +15,7 @@
         <script type="text/javascript" src="{{asset('js/googlemap.js') }}"></script>
     </head>
     <body>
-      @include('includes.nav')
+      @include('includes.navs.guest_nav')
       {{-- map --}}
       <div id="map"></div>
       {{-- modals --}}
@@ -26,16 +26,17 @@
                     <h4 class="modal-title" id="myModalLabel">Log in</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/action_page.php" class="was-validated">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="form-group">
                           <label for="uname">Username:</label>
-                          <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                          <input type="text" class="form-control" id="name" placeholder="Enter username" name="name" required>
                           <div class="valid-feedback">Valid.</div>
                           <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="form-group">
                           <label for="pwd">Password:</label>
-                          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
                           <div class="valid-feedback">Valid.</div>
                           <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
@@ -70,8 +71,8 @@
                           <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Email:</label>
-                            <input type="email" class="form-control" id="pwd" placeholder="Email" name="email" required>
+                            <label for="uemail">email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                           </div>
