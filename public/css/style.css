@@ -1,7 +1,7 @@
 #map {
     height: 100%;
   }
-  /* Optional: Makes the sample page fill the window. */
+
 html,body {
     height: 91%;
     margin: 0;
@@ -23,4 +23,34 @@ html,body {
     background-color: #0372e0 !important;
     color: white;
     text-align: center;
+}
+.myHide {
+  display: none;
+}
+
+.myVisible {
+  display: block;
+}
+
+.ola, .kinisi, .thermansi, .xrimata, .litra{
+  margin: 5px 15px;
+}
+
+#check1, #check2, #check3, #check4, #check5{
+  margin-right: 10px;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.input_posotita ,
+.monada {
+  display: inline-block;
+}
+
+.submit_btn {
+  display: block;
 }

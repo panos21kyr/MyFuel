@@ -8,9 +8,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#basicModal-orders" href="#">Orders</a>
-            </li>
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
@@ -26,7 +23,11 @@
                     </form>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#basicModal-select_fuel_orders" class="nav-link" href="#">select fuel</a>
+            </li>
         </ul>
     </div>
   </nav>
+  @include('includes.money_modals')
 @endsection

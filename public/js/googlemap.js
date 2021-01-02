@@ -1,19 +1,3 @@
-// function response(callback){
-//     return new Promise((resolve, reject) => {   
-//         var json;
-//         var xhr = new XMLHttpRequest();
-//         var url = "http://localhost/project%20kokkoras/myFuel/public/api/data";
-//         xhr.open("GET", url, true,);
-//         xhr.setRequestHeader("Content-Type", "application/json");
-//         xhr.send(null);
-//         xhr.onreadystatechange = function () {
-//             if (xhr.readyState === 4 && xhr.status === 200) {
-//                 json = JSON.parse(xhr.responseText);
-//             }
-//         }
-//     }) 
-// }
-
 function getJson(){
     fetch('http://localhost/project%20kokkoras/myFuel/public/api/data',
     {method: 'GET'}
@@ -21,7 +5,6 @@ function getJson(){
     .then(response => response.json())
     .then(json => initMap(json))
     .catch(error => console.error(error))
-    
 }
 
 getJson();
@@ -41,3 +24,36 @@ function initMap(json) {
         });
     }
 }
+
+$(document).ready(function() {
+    $("input[type=radio]").change(function() {
+      $("select").removeClass('myVisible myHide');
+      if (check1.checked) {
+        $('#firstDropdown').addClass('myVisible');
+        $('#secondDropdown').addClass('myHide');
+        $('#thirdDropdown').addClass('myHide');
+      }
+      if (check2.checked) {
+        $('#firstDropdown').addClass('myHide');
+        $('#secondDropdown').addClass('myVisible');
+        $('#thirdDropdown').addClass('myHide');
+      }
+      if (check3.checked) {
+        $('#firstDropdown').addClass('myHide');
+        $('#secondDropdown').addClass('myHide');
+        $('#thirdDropdown').addClass('myVisible');
+      }
+    });
+  });
+
+const a = document.querySelector(".monada");
+
+document.querySelector(".xrimata").addEventListener("click", () => {
+  const xrimata = "$";
+  a.textContent = xrimata;
+});
+
+document.querySelector(".litra").addEventListener("click", () => {
+  const litra = "lt";
+  a.textContent = litra;
+});
