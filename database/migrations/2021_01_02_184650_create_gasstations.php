@@ -14,11 +14,10 @@ class CreateGasstations extends Migration
     public function up()
     {
         Schema::create('gasstations', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('gasStationLat', $precision = 10, $scale = 7)->nullable();
-            $table->decimal('gasStationLong', $precision = 10, $scale = 7)->nullable();
-            $table->tinyInteger('fuelCompID',4);
-
+            $table->id('gasStationID');
+            $table->decimal('gasStationLat', 10, 7)->nullable();
+            $table->decimal('gasStationLong', 10, 7)->nullable();
+            $table->tinyInteger('fuelCompID');
             $table->string('fuelCompNormalName',45)->charset = 'utf8';
             $table->string('gasStationOwner',128);
             $table->string('ddID',10);
@@ -29,7 +28,10 @@ class CreateGasstations extends Migration
             $table->string('countyName',64);
             $table->string('gasStationAddress',255)->nullable();
             $table->char('phone1', 10)->nullable();
+            $table->string('username',45);
             $table->timestamps();
+
+            $table->foreign('username')->references('username')->on('users');
         });
     }
 

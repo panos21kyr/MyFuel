@@ -14,12 +14,18 @@ class CreatePricedata extends Migration
     public function up()
     {
         Schema::create('pricedata', function (Blueprint $table) {
-            $table->id();
+            $table->id('productID');
+            $table->unsignedBigInteger('gasStationID');
+            $table->unsignedBigInteger('fuelTypeID');
+            $table->unsignedBigInteger('fuelSubTypeID');
             $table->string('fuelNormalName');
             $table->string('fuelName');
-            $table->decimal('fuelPrice', $precision = 4, $scale = 3);
-            $table->tinyInteger('isPremium',1);
+            $table->decimal('fuelPrice', 4, 3);
+            $table->timestamp('dateUpdated')->nullable();
+            $table->tinyInteger('isPremium');
             $table->timestamps();
+
+            $table->foreign('gasStationID')->references('gasStationID')->on('gasstations');
         });
     }
 

@@ -13,10 +13,15 @@ class CreateOrders extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->smallInterger('quantity',5);
+        Schema::create('orders', function (Blueprint $table) {     
+            $table->id('orderID');
+            $table->unsignedBigInteger('productID');
+            $table->string('username',45);
+            $table->smallInteger('quantity');
+            $table->timestamp('when');
             $table->timestamps();
+
+            $table->foreign('username')->references('username')->on('users');
         });
     }
 

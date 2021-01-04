@@ -24,6 +24,6 @@ Route::get('/main', [GasstationsController::class, 'index']);
 
 Route::get('/guest', [MapController::class, 'index']);
 
-Route::get('/user', [MapController::class, 'user']);
+Route::get('/user', [MapController::class, 'user'])->name('user');
 
 Route::get('/home', 'HomeController@index')->name('home');
