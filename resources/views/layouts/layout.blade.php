@@ -16,13 +16,14 @@
     <body>
     @yield('nav')
     <div id="map"></div>
-    @include('includes.modals')
+    @yield('modals')
     <footer class="bg-light text-center text-lg-start">
       <div class="text-center p-3">
         © {{ date('Y')}} Copyright:
         <a class="text-dark" href="www.Myfuel.com">www.Myfuel.com</a>
       </div>
       </footer>
+    <script type="text/javascript" src="{{asset('js/googlemapsfuel.js') }}"></script>
     <script type="text/javascript" src="{{asset('js/googlemap.js') }}"></script>
     <script type="text/javascript" src="{{asset('js/fuelsmap.js') }}"></script>
     </body>

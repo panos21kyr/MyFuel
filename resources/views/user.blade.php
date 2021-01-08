@@ -24,10 +24,13 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#basicModal-select_fuel_orders" class="nav-link" href="#">select fuel</a>
+                <a class="nav-link" data-toggle="modal" data-target="#basicModal-select_fuel" class="nav-link" href="#">select fuel</a>
             </li>
         </ul>
     </div>
   </nav>
-  @include('includes.money_modals')
+@endsection
+
+@section('modals')
+    @include('includes.select_fuel_modal')
 @endsection

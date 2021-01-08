@@ -22,14 +22,12 @@ Route::get("data",[MapController::class,'getData']);
 
 // // 1. GET: Λήψη δεδομένων πρατηρίων και τιμών επιλεγμένου καυσίμου.
 Route::get("gasstations/fuels/{fuel}",[MapController::class,'getFuels']);
-                            //fuel
                             
 // // 2. GET: Πλήθος πρατηρίων (ακέραιος), μέγιστη, ελάχιστη και μέση τιμή ανά lt (με 3 δεκαδικά).
 // Route::get("gasstations",[MapController::class,'']);
 
 // // 3. GET: Λήψη τιμοκαταλόγου ενός πρατηρίου.
-Route::get("gasstations/{id}",[MapControllerr::class,'getPriceList']);
-                    // gasstation
+Route::get("gasstations/{gasstation}",[MapController::class,'getPriceList']);
 
 // // 4. POST: LogIn χρήστη (η database έχει ήδη χρήστες).
 // Route::post("data",[UsersController::class,'']);

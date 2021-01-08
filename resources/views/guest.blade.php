@@ -20,5 +20,10 @@
         </ul>
     </div>
   </nav>
-  @include('includes.select_fuel_modal')
+@endsection
+
+@section('modals')
+    @include('includes.login')
+    @include('includes.register')
+    @include('includes.select_fuel_modal')
 @endsection
