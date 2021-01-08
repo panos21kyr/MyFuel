@@ -9,8 +9,6 @@ function loadPage(){
 
 let map;
 let markers = [];
-
 loadPage();
-
 
 

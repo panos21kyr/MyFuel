@@ -33,4 +33,5 @@
 
 @section('modals')
     @include('includes.select_fuel_modal')
+    @include('includes.order_modal')
 @endsection

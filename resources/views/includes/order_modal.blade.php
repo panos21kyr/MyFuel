@@ -1,4 +1,4 @@
-<div class="modal fade" id="basicModal-select_fuel" tabindex="-1" role="dialog" aria-labelledby="basicModal-select_fuel" aria-hidden="true">
+<div class="modal fade" id="basicModal-order" tabindex="-1" role="dialog" aria-labelledby="basicModal-order" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,8 +22,14 @@
                             <option>Υγραέριο Κίνησης</option>
                         </optgroup>
                     </select>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">lt</span>
+                        </div>
+                    </div>
                     <div class="input-group-append">
-                        <button class="btn btn-info" type="button" data-dismiss="modal" value="getFuels" onclick="getFuels()">fuels</button>
+                        <button class="btn btn-info" type="button" data-dismiss="modal" value="getFuels" onclick="orderFuel()">order</button>
                     </div>
                 </div>
             </div>
@@ -33,4 +39,3 @@
         </div>
     </div>
 </div>
-
