@@ -7,7 +7,6 @@ function loadPage(){
     .catch(error => console.error(error))
 }
 
-const iconBase = 'http://localhost/project%20kokkoras/myFuel/public/js/logos/';
 let map;
 let markers = [];
 
