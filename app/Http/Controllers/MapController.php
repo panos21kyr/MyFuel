@@ -33,7 +33,7 @@ class MapController extends Controller
 
     public function getPriceList($gasstation) {
         $pricelist = Pricedata::where('gasStationID',$gasstation)
-                    ->get(['fuelName','fuelPrice']);
+                    ->get(['fuelName','fuelPrice','fuelTypeID']);
         return response()->json($pricelist);
     }
 }

@@ -29,9 +29,6 @@ Route::get("gasstations/fuels/{fuel}",[MapController::class,'getFuels']);
 // // 3. GET: Λήψη τιμοκαταλόγου ενός πρατηρίου.
 Route::get("gasstations/{gasstation}",[MapController::class,'getPriceList']);
 
-// // 4. POST: LogIn χρήστη (η database έχει ήδη χρήστες).
-// Route::post("data",[UsersController::class,'']);
-
 // // 5. POST: Αποστολή δεδομένων παραγγελίας από πλευράς χρήστη (ποσότητα).
 // Route::post("data",[OrdersController::class,'']);
 

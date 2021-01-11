@@ -33,5 +33,4 @@ function getFuels(){
     .then(json => selectedFuel(json))
 }
 
-
     

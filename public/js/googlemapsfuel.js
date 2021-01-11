@@ -4,8 +4,31 @@ function initMap(json) {
       zoom: 15,
       center: larisa,
     });
+    for (var i = 0; i < json.length; i++) {
+        const infowindow = new google.maps.InfoWindow({
+            content: popup(json[i]),
+        });
+        const gasIcon = searchIcon(json[i].fuelCompNormalName);
+        const marker = new google.maps.Marker({
+            position: new google.maps.LatLng(parseFloat(json[i].gasStationLat),parseFloat(json[i].gasStationLong)),
+            title: json[i].fuelCompNormalName,
+            map,
+            icon: gasIcon,
+        });
+        marker.addListener("click", () => {
+            infowindow.open(map, marker);
+            popup(json[i]);
+            
+        });
+    }
+}
 
-
+function selectedFuel(json) {
+    const larisa = { lat: 39.643452, lng: 22.413208 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: larisa,
+    });
     for (var i = 0; i < json.length; i++) {
         const infowindow = new google.maps.InfoWindow({
             content: popup(json[i]),
@@ -23,55 +46,21 @@ function initMap(json) {
         });
     }
 }
-// fuelCompNormalName: "AVIN"
-// gasStationAddress: "ΒΟΛΟΥ 22-24 ΛΑΡΙΣΑ"
-// gasStationID: 441
-// gasStationLat: "39.6337420"
-// gasStationLong: "22.4324412"
-// gasStationOwner: "ΜΑΚΡΑΙΩΝ Α.Ε. ΥΠΟΚ/ΜΑ Νο 53"
-// municipalityID: "42010000"
-// municipalityNormalName: "ΛΑΡΙΣΑΣ"
-// phone1: null
-// updated_at: null
-// username: "user1"
-function popup(jsoni){
+
+function popup(json){
     var x;
     x = `<div class="card" style="width: 10rem;">
-            <img class="card-img-top" style="width: 10rem; height: 4rem;" src="${searchIcon(jsoni.fuelCompNormalName)}" alt="Card image cap">
+            <img class="card-img-top" style="width: 10rem; height: 4rem;" src="${searchIcon(json.fuelCompNormalName)}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">${jsoni.fuelCompNormalName}</h5>
-                <h6> ${jsoni.phone1}</h6>
-                <p class="card-text">${jsoni.gasStationOwner}</p>
+                <h5 class="card-title">${json.fuelCompNormalName}</h5>
+                <h6> ${json.phone1}</h6>
+                <p class="card-text">${json.gasStationOwner}</p>
             </div>
             <div class="card-body">
-                <a class="nav-link" data-toggle="modal" data-target="#basicModal-order" href="#" onclick="getPriceList(${jsoni.gasStationID})">Τιμοκαταλογος</a>
+                <a class="nav-link" data-toggle="modal" data-target="#basicModal-order" href="#" onclick="getPriceList(${json.gasStationID})">Τιμοκαταλογος</a>
             </div>
         </div>`;
     return x;
-}
-
-function selectedFuel(json) {
-    const larisa = { lat: 39.643452, lng: 22.413208 };
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 15,
-      center: larisa,
-    });
-
-    const infowindow = new google.maps.InfoWindow({
-        content: contentString,
-    });
-    for (var i = 0; i < json.length; i++) {
-        const gasIcon = searchIcon(json[i].fuelCompNormalName);
-        const marker = new google.maps.Marker({
-            position: new google.maps.LatLng(parseFloat(json[i].gasStationLat),parseFloat(json[i].gasStationLong)),
-            title: json[i].fuelCompNormalName,
-            map,
-            icon: gasIcon,
-        });
-        marker.addListener("click", () => {
-            infowindow.open(map, marker);
-        });
-    }
 }
 
 function searchIcon(gasName) {
@@ -142,3 +131,55 @@ function searchIcon(gasName) {
 }
 
 
+
+function getPriceList(stationID){
+    var link = 'http://localhost/project%20kokkoras/myFuel/public/api/gasstations/';
+    var call = link+stationID;
+    fetch(call,
+        {method: 'GET'}
+        )
+        .then(response => response.json())
+        .then(json => createPriceList(json))
+}
+
+function createPriceList(pricelist){
+    globalJson = pricelist;
+    const div = document.getElementById('price_list');
+    const ul = document.createElement("ul");
+    ul.setAttribute("id","prices");
+    ul.setAttribute("class","list-group");
+    for (let i = 0; i < pricelist.length; i++) {
+        var li = document.createElement("li");
+        li.setAttribute("class","list-group-item");
+        li.innerText =`Fuel: ${pricelist[i].fuelName} Price: ${pricelist[i].fuelPrice}`;
+        ul.appendChild(li);
+    }
+    div.parentNode.insertBefore(ul,div);
+}
+
+function removePriceList(){
+    var elem = document.querySelector('#prices');
+    elem.parentNode.removeChild(elem);
+}
+
+function orderFuel(json,user){
+    var fuel = document.getElementById("fuel");
+    var lt = document.getElementById("lt");
+    var username = user;
+    var fuelID;
+    var quantity = lt.value;
+    for(let i=0; i<json.length; i++){
+        if(json[i].fuelName === fuel.value){
+            fuelID = json[i].fuelTypeID;
+        }
+    }
+    
+
+    console.log(quantity);
+    console.log(fuelID);
+    console.log(username);
+    //reset input 
+    removePriceList();
+    fuel.value = "choose";
+    lt.value = 0;
+}

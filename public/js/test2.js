@@ -5,7 +5,7 @@ function initMap(json) {
       center: larisa,
     });
 
-    const contentString = 'o kwstas gamnietai';
+    const contentString = 'test';
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
     });
@@ -27,7 +27,7 @@ function selectedFuel(json) {
       center: larisa,
     });
 
-    const contentString = 'o kwstas gamnietai';
+    const contentString = 'test';
     const infowindow = new google.maps.InfoWindow({
         content: contentString,
     });

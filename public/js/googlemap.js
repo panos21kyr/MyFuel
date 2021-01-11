@@ -9,6 +9,7 @@ function loadPage(){
 
 let map;
 let markers = [];
+var globalJson;
 loadPage();
 
 

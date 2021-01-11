@@ -12,6 +12,7 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{config('googlemap')['map_apikey']}}&callback=initMap&libraries=&v=weekly" defer ></script>      
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="auth-check" content="{{ (Auth::check()) ? 'true' : 'false' }}">
       </head>
     <body>
     @yield('nav')
@@ -24,7 +25,7 @@
       </div>
       </footer>
     <script type="text/javascript" src="{{asset('js/googlemapsfuel.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/googlemap.js') }}"></script>
     <script type="text/javascript" src="{{asset('js/fuelsmap.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/googlemap.js') }}"></script>
     </body>
 </html>
